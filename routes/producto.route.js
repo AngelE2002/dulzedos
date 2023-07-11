@@ -2,7 +2,7 @@ const express = require("express")
 const productoRuta = express.Router()
 
 //Declaramos un objeto de nuestro modelo//
-let Productos = require('../models/Producto')
+let Producto = require('../models/Producto')
 
 //Agregar un nuevo empleado//
 productoRuta.route('/create').post((req,res)=>{
@@ -18,7 +18,7 @@ productoRuta.route('/create').post((req,res)=>{
 
 //Obtenemos todos los empleados//
 productoRuta.route('/productos').get((req,res)=>{
-    Empleado.find()
+    Producto.find()
     .then((data)=>{
         res.send(data)
     })
