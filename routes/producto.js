@@ -1,12 +1,12 @@
 const express = require("express")
-const empleadoRuta = express.Router()
+const productoRuta = express.Router()
 
 //Declaramos un objeto de nuestro modelo//
-let Empleado = require('../models/Empleado')
+let Productos = require('../models/Producto')
 
 //Agregar un nuevo empleado//
-empleadoRuta.route('/create').post((req,res)=>{
-    Empleado.create(req.body)
+productoRuta.route('/create').post((req,res)=>{
+    Producto.create(req.body)
     .then((data)=>{
         console.log('se inserto un registro')
         res.send(data)
@@ -17,7 +17,7 @@ empleadoRuta.route('/create').post((req,res)=>{
 })
 
 //Obtenemos todos los empleados//
-empleadoRuta.route('/empleados').get((req,res)=>{
+productoRuta.route('/productos').get((req,res)=>{
     Empleado.find()
     .then((data)=>{
         res.send(data)
@@ -28,8 +28,8 @@ empleadoRuta.route('/empleados').get((req,res)=>{
 })
 
 //Obtenemos un solo empleado por su id//
-empleadoRuta.route('/empleado/:id').get((req,res)=>{
-    Empleado.findById(req.params.id)
+productoRuta.route('/producto/:id').get((req,res)=>{
+    Producto.findById(req.params.id)
     .then((data)=>{
         res.send(data)
     })
@@ -39,8 +39,8 @@ empleadoRuta.route('/empleado/:id').get((req,res)=>{
 })
 
 //Actualizar un empleado//
-empleadoRuta.route('/update/:id').put((req,res)=>{
-    Empleado.findByIdAndUpdate(req.params.id,{
+productoRuta.route('/update/:id').put((req,res)=>{
+    Producto.findByIdAndUpdate(req.params.id,{
         $set:req.body
     })
     .then((data)=>{
@@ -52,8 +52,8 @@ empleadoRuta.route('/update/:id').put((req,res)=>{
 })
 
 //Metodo para eliminar empleado//
-empleadoRuta.route('/delete/:id').delete((req,res)=>{
-    Empleado.findByIdAndRemove(req.params.id)
+productoRuta.route('/delete/:id').delete((req,res)=>{
+    Producto.findByIdAndRemove(req.params.id)
     .then((data)=>{
         res.send(data)
     })
@@ -62,4 +62,4 @@ empleadoRuta.route('/delete/:id').delete((req,res)=>{
     })
 })
 
-module.exports = empleadoRuta;
+module.exports = productoRuta;
