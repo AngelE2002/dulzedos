@@ -62,4 +62,4 @@ productoRuta.route('/delete/:id').delete((req,res)=>{
     })
 })
 
-module.exports = productoRuta;
+module.exports = productoRuta;
